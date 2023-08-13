@@ -1,0 +1,106 @@
+*{
+    box-sizing: border-box;
+}
+
+header .menu{
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    gap: 10px;
+    background-color: white;
+    img{
+        object-fit: cover;
+        width: 10%;
+        height: 10%;
+    }
+    h1{
+        position: relative;
+        padding: 0;
+        margin: 0;
+        font-family: "Raleway", sans-serif;
+        font-weight: 300;
+        font-size: 40px;
+        color: #080808;
+        -webkit-transition: all 0.4s ease 0s;
+        -o-transition: all 0.4s ease 0s;
+        transition: all 0.4s ease 0s;
+    }
+    ul{
+        list-style: none;
+        display: flex;
+        li{
+            gap: 10px;
+            margin: 10px;
+            button{
+                font-size: 10px;
+                padding: 10px 24px;
+                border-radius: 12px;
+                background-color: blue;
+                color: white;
+                border-color: 2px solid black;  
+            }
+        }
+    }
+}    
+main{
+h2{
+  text-align: center;
+  color:#222; font-size:30px; font-weight:400;
+  text-transform: uppercase;
+  word-spacing: 1px; letter-spacing:2px; color:#c50000;
+}
+.cuerpo {
+    .cuerpoTarjetas{
+        padding-bottom: 2.5rem;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: stretch;
+        flex-wrap: wrap;
+        width: 100vw;
+        height: 100vh;
+        gap:10px;
+        margin: 10px;
+        padding: 10px;
+        .tarjeta{
+            display: flex;
+            flex-direction: column;
+            width: 30vw;
+            height: auto;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin: 5px;
+            padding: 5px;
+            img{
+                object-fit: cover;
+                width:100%;
+                height: 100%;
+            }
+            p{
+                text-align: justify;
+                padding: 10px;
+                font-size: 1rem;    
+            }
+            button{
+               font-size: 12px;
+               padding: 10px 24px;
+               border-radius: 12px;
+               background-color: orange;
+               color: white;
+               border-color: 2px solid red;    
+            }
+            .precioCantidad{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin: 10px;
+            }
+        }    
+    }
+}
+}    
+
+
+
+
