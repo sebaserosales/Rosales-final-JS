@@ -32,7 +32,7 @@ const productos=[
     categoria:"cerveza",
     precio:430,
     color:"rubia",
-    img: 'Dubbel.jpeg',
+    img: 'img/Dubbel.jpeg',
     descripcion:"Con notas cálidas de caramelo y frutas oscuras que bailan en tu paladar. Nuestra Belgian Dubbel equilibra magistralmente la dulzura con un toque especiado y un sutil regusto a levadura belga, creando una sinfonía de sabores complejos",
     },
     {
@@ -64,19 +64,37 @@ const productos=[
     }
 ];
 
-const contenedor = 
+const carrito = [];
+
+const contenedor = document.querySelector("#contenedor-productos");
+console.log(contenedor);
+ 
+productos.forEach( p =>{
+   const div = document.createElement("div");
+   div.classList.add("tarjeta");
+   
+   div.innerHTML = `
+   <img src="${p.img}" alt="Cerveza ${p.nombre}">
+   <h3>${p.nombre}</h3>
+   <p>${p.descripcion}</p>
+       
+   <div class="precioCantidad">
+       <label for="">$${p.precio} &nbsp;  </label>
+       <label for="">Cant: &nbsp; </label>
+       <input type="number" value="1" min="0">
+   </div>
+   `
+const btnAgregar = document.createElement("button");
+btnAgregar.classList.add("button-42");
+btnAgregar.innerText = "Agregar al Carrito";
+btnAgregar.addEventListener("click",()=>{
+    carrito.push(p);
+})
 
 
-`<div class="cuerpoTarjetaNeipa tarjeta">
-    <img src="img/neipa.png" alt="Cerveza Neipa">
-    <h3>NEIPA</h3>
-    <p>Jugosas notas tropicales y turbidez seductora. Cada sorbo es como un sorprendente paseo por un huerto de frutas tropicales, con explosiones de mango, maracuyá y cítricos que bailan en tu paladar. Nuestra NEIPA equilibra hábilmente la suavidad sedosa con un amargor suave, creando una experiencia de sabor que desafía las expectativas</p>
-    
-    <div class="precioCantidad">
-        <label for="">$470 &nbsp;  </label>
-        <label for="">Cant: &nbsp; </label>
-        <input type="number" id="cantNeipa" value="1" min="0">
-    </div>
-    <button id="comprarNeipa" class="button-42">Agregar al Carrito</button>
-</div>`
+contenedor.appendChild(div);
+div.appendChild(btnAgregar); 
+})
+console.log(carrito);
+
 

@@ -68,6 +68,8 @@ main .cuerpo .cuerpoTarjetas {
     gap: 15px;
     margin: 5px;
     padding: 5px; }
+    main .cuerpo .cuerpoTarjetas .tarjeta h3 {
+      text-transform: uppercase; }
     main .cuerpo .cuerpoTarjetas .tarjeta img {
       object-fit: cover;
       width: 100%;
