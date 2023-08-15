@@ -1,3 +1,5 @@
+//Lista de productos
+
 const productos=[
     {
     id:1,
@@ -64,11 +66,12 @@ const productos=[
     }
 ];
 
-const carrito = [];
+
 
 const contenedor = document.querySelector("#contenedor-productos");
-console.log(contenedor);
- 
+//console.log(contenedor);
+
+//Armado lista productos
 productos.forEach( p =>{
    const div = document.createElement("div");
    div.classList.add("tarjeta");
@@ -78,23 +81,88 @@ productos.forEach( p =>{
    <h3>${p.nombre}</h3>
    <p>${p.descripcion}</p>
        
-   <div class="precioCantidad">
-       <label for="">$${p.precio} &nbsp;  </label>
-       <label for="">Cant: &nbsp; </label>
-       <input type="number" value="1" min="0">
+   
+       <label for="" id="price">$${p.precio}</label>
+    <div class="cantidad">
+       <label for="">Cant: </label>
+       <input type="number" id="cant" value="1" min="0">
    </div>
    `
 const btnAgregar = document.createElement("button");
-btnAgregar.classList.add("button-42");
+btnAgregar.classList.add("button-42","btn-agregar");
 btnAgregar.innerText = "Agregar al Carrito";
-btnAgregar.addEventListener("click",()=>{
-    carrito.push(p);
-})
-
-
+// btnAgregar.addEventListener("click",()=>{
+    // carrito.push(p);
+    // localStorage.setItem("carrito",JSON.stringify(carrito));
+// })
 contenedor.appendChild(div);
-div.appendChild(btnAgregar); 
+div.appendChild(btnAgregar);
 })
-console.log(carrito);
 
+//Llenado carrito
+let carrito = [];
+
+
+contenedor.addEventListener("click", e=>{
+    if(e.target.classList.contains("btn-agregar")){
+        const producto = e.target.parentElement;
+
+        const infoProducto ={
+            cantidad: parseInt(producto.querySelector("#cant").value),
+            nombre: producto.querySelector('h3').textContent,
+            precio: producto.querySelector("#price").textContent,
+        };
+
+        //Verificacion si ya fue agregado
+
+        const existe = carrito.some(p => p.nombre === infoProducto.nombre)
+        if(existe){
+            const product = carrito.map(p => {
+                if(p.nombre === infoProducto.nombre){
+                    p.cantidad += parseInt(infoProducto.cantidad);
+                    return p;
+                }
+                else{
+                    return p;
+                }
+            })
+            carrito=[...product];
+        }
+        else{
+            carrito = [...carrito,infoProducto];
+        }
+
+        
+        console.log(carrito);
+    }
+    
+})
+
+const showHTML = ()=>{
+    carrito.forEach(p=>{
+        const containerProduct = document.createElement('div');
+        containerProduct.classList.add('listaProductos');
+
+        containerProduct.innerHTML=`<label for="">${p.cantidad}</label>
+        <label for="">${p.nombre}</label>
+        <label for="">${p.precio}</label>`;
+        contenedor.appendChild(containerProduct);
+        //Calculo totales
+        let total;
+        let cantTotal;
+        total = total + parseInt(p.precio.slice(1) * p.cantidad);
+        cantTotal = cantTotal + p.cantidad;
+
+    })
+}
+//mostrar carrito
+
+const verCarrito = document.querySelector("#verCarrito");
+verCarrito.addEventListener("click",showHTML);
+
+    
+    
+
+    
+    
 

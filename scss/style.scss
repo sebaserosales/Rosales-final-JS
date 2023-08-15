@@ -101,6 +101,20 @@ h2{
             }
         }    
     }
+    .listaProductos{
+        width: 300px;
+        height: 500px;
+        margin-top: 30px;
+        margin-left:30px;
+        border-radius: 5px;
+        display: flex;
+        position: absolute;
+        justify-content: center;
+        align-items: center;
+        background-color: white;
+        z-index: 1;
+        
+    }
 }
 }    
 
