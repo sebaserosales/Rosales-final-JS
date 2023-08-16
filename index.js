@@ -100,7 +100,7 @@ div.appendChild(btnAgregar);
 })
 
 //Llenado carrito
-let carrito = [];
+let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
 
 contenedor.addEventListener("click", e=>{
@@ -127,38 +127,59 @@ contenedor.addEventListener("click", e=>{
                 }
             })
             carrito=[...product];
+            localStorage.setItem("carrito",JSON.stringify(carrito));
         }
         else{
             carrito = [...carrito,infoProducto];
+            localStorage.setItem("carrito",JSON.stringify(carrito));
         }
 
         
-        console.log(carrito);
+        //console.log(carrito);
+        
     }
     
 })
 
-const showHTML = ()=>{
+function showHTML() {
     carrito.forEach(p=>{
-        const containerProduct = document.createElement('div');
-        containerProduct.classList.add('listaProductos');
-
-        containerProduct.innerHTML=`<label for="">${p.cantidad}</label>
-        <label for="">${p.nombre}</label>
-        <label for="">${p.precio}</label>`;
-        contenedor.appendChild(containerProduct);
+        const contenidoCarritoProductos = document.querySelector(".contenidoCarritoProductos");
+        const anadirProducto = document.createElement("div");
+        anadirProducto.classList.add("contenidoCarritoProductosLista");
+        anadirProducto.innerHTML=`
+        <label for="">${p.cantidad}</label> <label for="">${p.nombre}</label> <label for="">${p.precio}</label> <br>`;
+        contenidoCarritoProductos.appendChild(anadirProducto);
         //Calculo totales
         let total;
         let cantTotal;
         total = total + parseInt(p.precio.slice(1) * p.cantidad);
         cantTotal = cantTotal + p.cantidad;
 
-    })
-}
-//mostrar carrito
+    });
+};
 
-const verCarrito = document.querySelector("#verCarrito");
-verCarrito.addEventListener("click",showHTML);
+//mostrar carrito
+const carritoCompras=document.getElementById("carritoCompras");
+const abrirCarrito = document.getElementById("verCarrito");
+const span = document.getElementsByClassName("cerrar")[0];
+
+abrirCarrito.addEventListener("click",()=>{
+    showHTML();
+    carritoCompras.style.display="block";
+});
+
+span.addEventListener("click",()=>{
+    carritoCompras.style.display ="none";
+});
+
+window.addEventListener("click",e=>{
+    if (e.tarjet == carritoCompras){
+        carritoCompras.style.display="none";
+    }
+});
+
+
+
 
     
     
