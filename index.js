@@ -3,29 +3,29 @@
 const productos=[
     {
     id:1,
-    nombre: "honey",
+    nombre: "Honey",
     categoria: "cerveza",
     precio: 450,
     color:"rubia",
-    img:'img/honey.jpeg' ,
+    img:'img/Lata-Honey.gif' ,
     descripcion:"Perfecta armonía entre la rica calidez de la miel fresca y el carácter refrescante de una cerveza artesanal, cada sorbo es un viaje sensorial único. Sumérgete en la suavidad dorada y déjate cautivar por el delicado dulzor de la miel que se entrelaza con notas sutiles de malta y lúpulo" ,
     },
     {
     id:2,
-    nombre:"strobel",
+    nombre:"Session Ipa",
     categoria: "cerveza",
     precio:520,
     color:"rojizo",
-    img:'img/strobel.jpeg',
+    img:'img/Lata-session-ipa.gif',
     descripcion: "Aromas tostados y las notas de café se fusionan en un baile intrigante. Un viaje hacia lo desconocido, con matices profundos de chocolate negro y un toque sutil de ahumado que despiertan tus sentidos",
     },
     {
     id:3,
-    nombre:"englandIpa",
+    nombre:"England Ipa",
     categoria:"cerveza",
     precio:450,
     color:"rubia",
-    img:'img/ipa.jpg',
+    img:'img/Lata-England-Ipa.gif',
     descripcion:"Lúpulos ingleses cuidadosamente seleccionados que dan vida a esta cerveza única. Notas florales y terrosas que te transportarán a los campos de lúpulo del Reino Unido. Nuestra England IPA equilibra magistralmente el amargor característico con toques suaves de malta, creando una experiencia de sabor equilibrada y distintiva",
     },
     {
@@ -39,11 +39,11 @@ const productos=[
     },
     {
     id:5,
-    nombre:"scotish",
+    nombre:"Scotish",
     categoria:"cerveza",
     precio:650,
     color:"rojizo",
-    img:'img/scotish.jpeg',
+    img:'img/Lata-scotish.gif',
     descripcion:"Nuestra Scottish Ale cautiva tus sentidos con notas cálidas de caramelo y toffee, y un suave matiz de turba que evoca los elementos naturales de Escocia. Ya sea que estés disfrutando de una tarde tranquila o celebrando momentos especiales, esta cerveza te brinda un vistazo a la autenticidad de Escocia en cada deleite",
     },
     {
@@ -141,28 +141,11 @@ contenedor.addEventListener("click", e=>{
     
 })
 
-function showHTML() {
-    carrito.forEach(p=>{
-        const contenidoCarritoProductos = document.querySelector(".contenidoCarritoProductos");
-        const anadirProducto = document.createElement("div");
-        anadirProducto.classList.add("contenidoCarritoProductosLista");
-        anadirProducto.innerHTML=`
-        <label for="">${p.cantidad}</label> <label for="">${p.nombre}</label> <label for="">${p.precio}</label> <br>`;
-        contenidoCarritoProductos.appendChild(anadirProducto);
-        //Calculo totales
-        let total;
-        let cantTotal;
-        total = total + parseInt(p.precio.slice(1) * p.cantidad);
-        cantTotal = cantTotal + p.cantidad;
-
-    });
-};
-
 //mostrar carrito
 const carritoCompras=document.getElementById("carritoCompras");
 const abrirCarrito = document.getElementById("verCarrito");
 const span = document.getElementsByClassName("cerrar")[0];
-
+const contenidoCarritoProductos = document.querySelector(".contenidoCarritoProductos");
 abrirCarrito.addEventListener("click",()=>{
     showHTML();
     carritoCompras.style.display="block";
@@ -170,6 +153,8 @@ abrirCarrito.addEventListener("click",()=>{
 
 span.addEventListener("click",()=>{
     carritoCompras.style.display ="none";
+    // const contenidoCarritoProductos = document.querySelector(".contenidoCarritoProductos");
+    contenidoCarritoProductos.innerHTML=``;
 });
 
 window.addEventListener("click",e=>{
@@ -178,6 +163,36 @@ window.addEventListener("click",e=>{
     }
 });
 
+function showHTML() {
+    carrito.forEach(p=>{
+    
+        const anadirProducto = document.createElement("div");
+        anadirProducto.classList.add("contenidoCarritoProductosLista");
+        anadirProducto.innerHTML=`
+        <span>${p.cantidad}</span> <span class="nombre">${p.nombre}</span> <span>${p.precio}</span> <span class="eliminarProducto">&times;</span> <br>`;
+        contenidoCarritoProductos.appendChild(anadirProducto);
+        //Calculo totales
+        let total;
+        let cantTotal;
+        // total = total + parseInt(p.precio.slice(1) * p.cantidad);
+        // cantTotal = cantTotal + p.cantidad;
+
+    });
+    
+};
+
+//Eliminar Producto del carrito
+contenidoCarritoProductos.addEventListener("click",(e)=>{
+    if(e.target.classList.contains("eliminarProducto")){
+        const product=e.target.parentElement;
+        const nombre= product.querySelector(".nombre").textContent;
+
+        carrito = carrito.filter(p => p.nombre !== nombre);
+        contenidoCarritoProductos.innerHTML=``;
+        localStorage.setItem("carrito",JSON.stringify(carrito));
+        showHTML();
+    }
+})
 
 
 

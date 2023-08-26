@@ -66,7 +66,7 @@ h2{
             display: flex;
             flex-direction: column;
             width: 30vw;
-            height: auto;
+            height: 60vh;
             align-items: center;
             justify-content: center;
             gap: 15px;
@@ -76,9 +76,9 @@ h2{
                 text-transform: uppercase;
             }
             img{
-                object-fit: cover;
-                width:100%;
-                height: 100%;
+                object-fit: contain;
+                width: 300px;
+                height: 400px;
             }
             p{
                 text-align: justify;
@@ -136,13 +136,18 @@ h2{
                 width: 100%;
                 margin: 10px;
                 justify-content: center;
-                align-items: center;
+                
                 .contenidoCarritoProductosLista{
                 
-                font-size: 20px;
-                font-weight: bold;
-                margin: 5px;
-            }
+                width: auto;
+                justify-content: center;
+                .eliminarProducto:hover,
+                .eliminarProducto:focus{
+                color: #000;
+                text-decoration: none;
+                cursor: pointer;
+                }
+                }
             }
         }
         
