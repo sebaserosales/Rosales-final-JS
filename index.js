@@ -91,10 +91,6 @@ productos.forEach( p =>{
 const btnAgregar = document.createElement("button");
 btnAgregar.classList.add("button-42","btn-agregar");
 btnAgregar.innerText = "Agregar al Carrito";
-// btnAgregar.addEventListener("click",()=>{
-    // carrito.push(p);
-    // localStorage.setItem("carrito",JSON.stringify(carrito));
-// })
 contenedor.appendChild(div);
 div.appendChild(btnAgregar);
 })
@@ -133,9 +129,26 @@ contenedor.addEventListener("click", e=>{
             carrito = [...carrito,infoProducto];
             localStorage.setItem("carrito",JSON.stringify(carrito));
         }
-
-        
-        //console.log(carrito);
+        //Mostrar confirmacion de agregado
+        Toastify({
+            text: "Producto agregado :)",
+            duration: 2000,
+            destination: "https://github.com/apvarun/toastify-js",
+            newWindow: true,
+            close: true,
+            gravity: "top", 
+            position: "right", 
+            stopOnFocus: true, 
+            style: {
+              background: "linear-gradient(to right, #00b09b, #96c93d)",
+            },
+            
+          }).showToast();
+          let totalProductos=0;
+          carrito.forEach((e)=>{
+            totalProductos += e.cantidad;
+          })
+          abrirCarrito.setAttribute("value",totalProductos);
         
     }
     
@@ -143,7 +156,7 @@ contenedor.addEventListener("click", e=>{
 
 //mostrar carrito
 const carritoCompras=document.getElementById("carritoCompras");
-const abrirCarrito = document.getElementById("verCarrito");
+const abrirCarrito = document.getElementById("carritoIcon");
 const span = document.getElementsByClassName("cerrar")[0];
 const contenidoCarritoProductos = document.querySelector(".contenidoCarritoProductos");
 abrirCarrito.addEventListener("click",()=>{
@@ -153,17 +166,23 @@ abrirCarrito.addEventListener("click",()=>{
 
 span.addEventListener("click",()=>{
     carritoCompras.style.display ="none";
-    // const contenidoCarritoProductos = document.querySelector(".contenidoCarritoProductos");
-    contenidoCarritoProductos.innerHTML=``;
 });
 
-window.addEventListener("click",e=>{
+window.addEventListener("click",(e)=>{
     if (e.tarjet == carritoCompras){
         carritoCompras.style.display="none";
     }
 });
 
 function showHTML() {
+    contenidoCarritoProductos.innerHTML=``;
+    if(!carrito.length){
+         const vacio=document.createElement("h3");
+         vacio.textContent = "El carrito esta vacío";
+         contenidoCarritoProductos.appendChild(vacio);
+        }
+        let total=0;
+        let cantTotal=0;
     carrito.forEach(p=>{
     
         const anadirProducto = document.createElement("div");
@@ -172,13 +191,16 @@ function showHTML() {
         <span>${p.cantidad}</span> <span class="nombre">${p.nombre}</span> <span>${p.precio}</span> <span class="eliminarProducto">&times;</span> <br>`;
         contenidoCarritoProductos.appendChild(anadirProducto);
         //Calculo totales
-        let total;
-        let cantTotal;
-        // total = total + parseInt(p.precio.slice(1) * p.cantidad);
-        // cantTotal = cantTotal + p.cantidad;
-
+        total = total + (parseInt(p.precio.slice(1)) * parseInt(p.cantidad));
+        cantTotal = cantTotal + parseInt(p.cantidad);
+        
+        
     });
-    
+    abrirCarrito.setAttribute("value",cantTotal);
+    const divTotalPagar = document.createElement("div");
+    divTotalPagar.classList.add("totalPagar");
+    divTotalPagar.innerHTML = `<br> <p> Total $${total}`;
+    contenidoCarritoProductos.appendChild(divTotalPagar);
 };
 
 //Eliminar Producto del carrito

@@ -48,6 +48,7 @@ h2{
   color:#222; font-size:30px; font-weight:400;
   text-transform: uppercase;
   word-spacing: 1px; letter-spacing:2px; color:#c50000;
+  
 }
 .cuerpo {
     .cuerpoTarjetas{
@@ -66,7 +67,7 @@ h2{
             display: flex;
             flex-direction: column;
             width: 30vw;
-            height: 60vh;
+            height: auto;
             align-items: center;
             justify-content: center;
             gap: 15px;
@@ -77,8 +78,8 @@ h2{
             }
             img{
                 object-fit: contain;
-                width: 300px;
-                height: 400px;
+                width: 20vw;
+                height: 30vh;
             }
             p{
                 text-align: justify;
@@ -105,13 +106,15 @@ h2{
         display: none;
         position: fixed;
         z-index: 1;
-        padding-top: 200px;
+        padding-top: 100px;
         left: 0;
         top: 0;
         width: 100%;
         height: 100%;
         overflow: auto;
         background-color: rgba(0,0,0,0.5);
+        border-radius: 30px;
+        
         .modal-content{
             position: relative;
             background-color: white;
@@ -136,11 +139,15 @@ h2{
                 width: 100%;
                 margin: 10px;
                 justify-content: center;
-                
+                align-items: center;
+                margin: auto;
                 .contenidoCarritoProductosLista{
-                
-                width: auto;
+                display:grid;
+                grid-template-columns: 20% 40% 30% 10%;
+                width: 50%;
                 justify-content: center;
+                margin: 5px;
+                font-size: 20px;
                 .eliminarProducto:hover,
                 .eliminarProducto:focus{
                 color: #000;
@@ -148,13 +155,31 @@ h2{
                 cursor: pointer;
                 }
                 }
+                .totalPagar{
+                    p{
+                    text-align: center;
+                    font-size: 30px;
+                    font-weight: bold;
+                    }
+                }
             }
         }
         
     }
 }
 }    
-
+.badge:after{
+    content:attr(value);
+    font-size:12px;
+    color: #fff;
+    background: red;
+    border-radius:50%;
+    padding: 0 5px;
+    position:relative;
+    left:-8px;
+    top:-10px;
+    opacity:0.9;
+}
 
 
 
