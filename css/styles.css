@@ -67,9 +67,25 @@ main .cuerpo .cuerpoTarjetas {
     justify-content: center;
     gap: 15px;
     margin: 5px;
-    padding: 5px; }
+    padding: 5px;
+    border: 1px solid #DEE1E3;
+    transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    border-radius: 12px; }
     main .cuerpo .cuerpoTarjetas .tarjeta h3 {
-      text-transform: uppercase; }
+      text-transform: uppercase;
+      font-family: sans-serif;
+      color: #21545a; }
+    main .cuerpo .cuerpoTarjetas .tarjeta .precio {
+      font-size: 24px;
+      font-family: "DIN Next", sans-serif; }
+    main .cuerpo .cuerpoTarjetas .tarjeta .cant {
+      font-size: 20px;
+      font-weight: bold; }
+    main .cuerpo .cuerpoTarjetas .tarjeta input {
+      width: 5em;
+      font-size: 20px;
+      text-align: center;
+      border: none; }
     main .cuerpo .cuerpoTarjetas .tarjeta img {
       object-fit: contain;
       width: 20vw;
@@ -79,12 +95,16 @@ main .cuerpo .cuerpoTarjetas {
       padding: 10px;
       font-size: 1rem; }
     main .cuerpo .cuerpoTarjetas .tarjeta button {
-      font-size: 12px;
-      padding: 10px 24px;
-      border-radius: 12px;
-      background-color: orange;
-      color: white;
-      border-color: 2px solid red; }
+      background-color: #618685;
+      color: whitesmoke;
+      font-size: 1em;
+      font-family: "DIN Next", sans-serif;
+      height: 2.5em;
+      width: 8em;
+      margin: 5px; }
+    main .cuerpo .cuerpoTarjetas .tarjeta button:focus,
+    main .cuerpo .cuerpoTarjetas .tarjeta button:hover {
+      cursor: pointer; }
     main .cuerpo .cuerpoTarjetas .tarjeta .precioCantidad {
       display: flex;
       align-items: center;
@@ -101,14 +121,15 @@ main .cuerpo .modal {
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgba(0, 0, 0, 0.5);
-  border-radius: 30px; }
+  background-color: rgba(0, 0, 0, 0.5); }
   main .cuerpo .modal .modal-content {
     position: relative;
+    left: 35%;
     background-color: white;
     margin: auto;
     padding: 20px;
-    width: 60%; }
+    width: 30%;
+    border-radius: 30px; }
     main .cuerpo .modal .modal-content .cerrar {
       color: black;
       float: right;
@@ -130,13 +151,13 @@ main .cuerpo .modal {
       main .cuerpo .modal .modal-content .contenidoCarritoProductos .contenidoCarritoProductosLista {
         display: grid;
         grid-template-columns: 20% 40% 30% 10%;
-        width: 50%;
+        width: 90%;
         justify-content: center;
         margin: 5px;
-        font-size: 20px; }
+        font-size: 1.5rem; }
         main .cuerpo .modal .modal-content .contenidoCarritoProductos .contenidoCarritoProductosLista .eliminarProducto:hover,
         main .cuerpo .modal .modal-content .contenidoCarritoProductos .contenidoCarritoProductosLista .eliminarProducto:focus {
-          color: #000;
+          color: red;
           text-decoration: none;
           cursor: pointer; }
       main .cuerpo .modal .modal-content .contenidoCarritoProductos .totalPagar p {
@@ -155,3 +176,7 @@ main .cuerpo .modal {
   left: -8px;
   top: -10px;
   opacity: 0.9; }
+
+.badge:focus,
+.badge:hover {
+  cursor: pointer; }

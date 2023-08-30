@@ -11,18 +11,15 @@ fetch('/ddbb.json')
         div.innerHTML = `
         <img src="${p.img}" alt="Cerveza ${p.nombre}">
         <h3>${p.nombre}</h3>
-        <p>${p.descripcion}</p>
-            
-        
-            <label for="" id="price">$${p.precio}</label>
+            <label for="" id="price" class="precio">$${p.precio}</label>
             <div class="cantidad">
-            <label for="">Cant: </label>
+            <label for="" class="cant">Cant: </label>
             <input type="number" id="cant" value="1" min="0">
         </div>
         `
         const btnAgregar = document.createElement("button");
         btnAgregar.classList.add("button-42","btn-agregar");
-        btnAgregar.innerText = "Agregar al Carrito";
+        btnAgregar.innerText = "Agregar";
         contenedor.appendChild(div);
         div.appendChild(btnAgregar);
         })

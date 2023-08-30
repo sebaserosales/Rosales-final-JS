@@ -43,6 +43,7 @@ header .menu{
     }
 }    
 main{
+
 h2{
   text-align: center;
   color:#222; font-size:30px; font-weight:400;
@@ -73,8 +74,28 @@ h2{
             gap: 15px;
             margin: 5px;
             padding: 5px;
+            border: 1px solid #DEE1E3;
+            transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+            border-radius: 12px;
             h3{
                 text-transform: uppercase;
+                font-family: sans-serif;
+                color: #21545a;
+            }
+            .precio{
+                font-size: 24px;
+                font-family: "DIN Next", sans-serif;
+
+            }
+            .cant{
+                font-size: 20px;
+                font-weight: bold;
+            }
+            input{
+                width: 5em;
+                font-size: 20px;
+                text-align: center;
+                border: none;
             }
             img{
                 object-fit: contain;
@@ -87,12 +108,17 @@ h2{
                 font-size: 1rem;    
             }
             button{
-               font-size: 12px;
-               padding: 10px 24px;
-               border-radius: 12px;
-               background-color: orange;
-               color: white;
-               border-color: 2px solid red;    
+              background-color: #618685;
+              color: whitesmoke;
+              font-size: 1em;
+              font-family: "DIN Next", sans-serif;
+              height: 2.5em;
+              width: 8em;
+              margin: 5px;    
+            }
+            button:focus,
+            button:hover{
+                cursor: pointer;
             }
             .precioCantidad{
                 display: flex;
@@ -113,14 +139,16 @@ h2{
         height: 100%;
         overflow: auto;
         background-color: rgba(0,0,0,0.5);
-        border-radius: 30px;
+        
         
         .modal-content{
             position: relative;
+            left:35%;
             background-color: white;
             margin: auto;
             padding: 20px;
-            width: 60%;
+            width: 30%;
+            border-radius: 30px;
             .cerrar{
                 color: black;
                 float: right;
@@ -144,13 +172,13 @@ h2{
                 .contenidoCarritoProductosLista{
                 display:grid;
                 grid-template-columns: 20% 40% 30% 10%;
-                width: 50%;
+                width: 90%;
                 justify-content: center;
                 margin: 5px;
-                font-size: 20px;
+                font-size: 1.5rem;
                 .eliminarProducto:hover,
                 .eliminarProducto:focus{
-                color: #000;
+                color: red;
                 text-decoration: none;
                 cursor: pointer;
                 }
@@ -180,6 +208,9 @@ h2{
     top:-10px;
     opacity:0.9;
 }
-
+.badge:focus,
+.badge:hover{
+cursor: pointer;
+}
 
 
