@@ -1,5 +1,30 @@
 const contenedor = document.querySelector("#contenedor-productos");
 
+window.addEventListener("load",()=>{
+    Swal.fire({
+        title: 'Que edad tienes?',
+        icon: 'question',
+        input: 'range',
+        inputLabel: 'Your age',
+        inputAttributes: {
+          min: 8,
+          max: 120,
+          step: 1
+        },
+        inputValue: 25
+      }).then((result)=>{
+        
+        if(parseInt(result.value) <18){
+            Swal.fire({
+            icon:'error',
+            text:'No tenes la edad suficiente para beber alcohol',
+            allowOutsideClick: false,
+            showConfirmButton: false,
+            allowEscapeKey: false
+        });
+        }        
+      })
+});
 //Armado lista productos
 fetch('/ddbb.json')
     .then((res) => res.json())

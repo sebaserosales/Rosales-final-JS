@@ -38,7 +38,6 @@ header .menu {
 
 main h2 {
   text-align: center;
-  color: #222;
   font-size: 30px;
   font-weight: 400;
   text-transform: uppercase;
@@ -56,8 +55,7 @@ main .cuerpo .cuerpoTarjetas {
   width: 100vw;
   height: 100vh;
   gap: 10px;
-  margin: 10px;
-  padding: 10px; }
+  margin: 10px; }
   main .cuerpo .cuerpoTarjetas .tarjeta {
     display: flex;
     flex-direction: column;
@@ -146,8 +144,7 @@ main .cuerpo .modal {
       width: 100%;
       margin: 10px;
       justify-content: center;
-      align-items: center;
-      margin: auto; }
+      align-items: center; }
       main .cuerpo .modal .modal-content .contenidoCarritoProductos .contenidoCarritoProductosLista {
         display: grid;
         grid-template-columns: 20% 40% 30% 10%;
