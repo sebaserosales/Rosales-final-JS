@@ -26,7 +26,7 @@ window.addEventListener("load",()=>{
       })
 });
 //Armado lista productos
-fetch('/ddbb.json')
+fetch('./ddbb.json')
     .then((res) => res.json())
     .then( (ddbb)=> { 
         ddbb.forEach( p =>{
